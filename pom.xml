@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <project xmlns="http://maven.apache.org/POM/4.0.0" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                               http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+
+  <!-- =========================================================== -->
+  <!--     Module Description                                      -->
+  <!-- =========================================================== -->
+  <groupId>org.fgdrf</groupId>
+  <artifactId>mil2525b</artifactId>
+  <packaging>jar</packaging>
+  <version>0.0.1</version>
+  <name>mil2525b Handler Factory</name>
+  <description>
+    additional Handler Factory to access Images with mil2525b URL protocoll
+  </description>
+  
+  <!-- for your project. -->
+  <inceptionYear>2010</inceptionYear>
+
+  <!-- Pick your license. -->
+  <licenses>
+    <license>
+      <name>Lesser General Public License (LGPL)</name>
+      <url>http://www.gnu.org/copyleft/lesser.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <!-- =========================================================== -->
+  <!--     Developers and Contributors                             -->
+  <!-- =========================================================== -->
+  <developers>
+    <developer>
+      <id>fgdrf</id>
+      <name>Frank Gasdorf</name>
+      <email>fgdrf@users.sourceforge.net</email>
+      <roles>
+        <role>Module Maintainer</role>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <dependencies>
+  	<dependency>
+  	  <!-- see http://openmap.bbn.com/cgi-bin/viewvc.cgi/trunk/lib/milStd2525_png.jar?root=openmap&view=log -->
+      <groupId>com.bbn.openmap</groupId>
+      <artifactId>mil2525b_png</artifactId>
+      <version>4.6.5</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/mil2525b_png.jar</systemPath>  	
+  	</dependency>
+	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.4</version>
+      <scope>test</scope>
+    </dependency>
+      <dependency>
+        <groupId>javax.media</groupId>
+        <artifactId>jai_imageio</artifactId>
+        <version>1.1</version>
+      </dependency>
+  </dependencies>
+
+  <!-- =========================================================== -->
+  <!--     Build Configuration                                     -->
+  <!--         copies all JARs in a single directory.              -->
+  <!-- =========================================================== -->
+  <build>
+    <pluginManagement>
+      <plugins>
+		  <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <configuration>
+	          <source>1.5</source>  <!-- The -source argument for the Java compiler. -->
+	          <target>1.5</target>  <!-- The -target argument for the Java compiler. -->
+	          <debug>true</debug>   <!-- Whether to include debugging information.   -->
+	          <encoding>UTF-8</encoding> <!-- The -encoding argument for the Java compiler. -->
+	          <fork>true</fork>
+	        </configuration>
+	      </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <!-- ====    Compilation      ============================== -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>**/Test*.java</include>
+          </includes>
+          <excludes>
+            <exclude></exclude>
+          </excludes>
+        </configuration>
+      </plugin>      
+    </plugins>
+  </build>
+</project>
